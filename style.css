@@ -4954,3 +4954,10 @@ html { scroll-behavior: smooth; }
   .how-arc { width: 64px; }
   .how-text { max-width: 260px; }
 }
+
+/* Footer - linkuri legale (Termeni / Confidentialitate / Cookies) */
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;padding:20px 0 6px;font-size:.86rem;}
+.footer-legal a{color:rgba(255,255,255,.78);text-decoration:none;transition:color .25s ease;}
+.footer-legal a:hover{color:#fff;text-decoration:underline;}
+.footer-legal .fl-sep{color:rgba(255,255,255,.35);}
+@media(max-width:600px){.footer-legal{gap:6px 10px;font-size:.8rem;}}
