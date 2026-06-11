@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rulouri Exterioare și Sisteme de Umbrire | COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Rulouri exterioare aluminiu manuale și motorizate, jaluzele verticale și tip rulou în Bacău. Protecție solară, intimitate și control al luminii.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* HERO — ancorăm poza spre partea de sus ca să se vadă ruloul ferestrei
+         (pe mobil banda e scundă și altfel taie caseta ruloului). Shading-ul rămâne. */
+      body.product-page .hero-split .hs-media img {
+        object-position: center top;
+      }
+    </style>
+    <style>
+      /* Layout: două coloane egale, lipite (fără ramă). Poza are exact aceeași
+         înălțime ca textul; secțiunea e cât conținutul. Fundalul (degradeu
+         albastru→alb, de sus în jos) stă SUB informații, în panoul de text. */
+      body.product-page .profile-row-light,
+      body.product-page .profile-row-dark {
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        background: none;
+      }
+      body.product-page .profile-row-inner,
+      body.product-page .profile-row-inner.reverse {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        align-items: stretch;
+        min-height: 0;
+      }
+
+      /* PANOUL DE TEXT — fundal degradeu sub informații */
+      body.product-page .profile-text {
+        flex: 1 1 50%;
+        min-width: 0;
+        max-width: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(40px, 5vw, 72px);
+        background: linear-gradient(to bottom,
+          #b9cbe6 0%, #d6e0ef 30%, #eef2f8 58%, #ffffff 100%);
+      }
+
+      /* POZA — aceeași înălțime ca textul (coloană egală, întinsă), margini drepte */
+      body.product-page .profile-media.photo {
+        position: relative;
+        flex: 1 1 50%;
+        min-width: 0;
+        align-self: stretch;
+        padding: 0;
+        margin: 0;
+        min-height: 0;
+        display: block;
+      }
+      body.product-page .profile-media.photo::before,
+      body.product-page .profile-media.photo::after { display: none; }
+      body.product-page .photo-frame {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      body.product-page .photo-frame::before,
+      body.product-page .photo-frame::after { display: none; }
+      body.product-page .profile-media.photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        object-fit: cover;
+        mix-blend-mode: normal;
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+      body.product-page .profile-row:hover .profile-media.photo img { transform: none; }
+
+      /* TEXT — închis, lizibil pe fundalul deschis */
+      body.product-page .profile-text h2 {
+        color: var(--color-secondary);
+        font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+        margin-bottom: 18px;
+      }
+      body.product-page .profile-text > p {
+        color: var(--color-body-soft, #4a5468);
+        font-size: 17px;
+        line-height: 1.7;
+        max-width: 48ch;
+      }
+      body.product-page .profile-text .specs-title {
+        color: var(--color-primary);
+        font-size: 13px;
+        margin: 24px 0 14px;
+      }
+      body.product-page .profile-text ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 0 0 26px;
+      }
+      body.product-page .profile-text ul li {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--color-secondary);
+        background: #ffffff;
+        border: 1px solid #e6ecf3;
+        border-radius: 12px;
+        padding: 13px 14px 13px 44px;
+        line-height: 1.3;
+        position: relative;
+        box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.06));
+      }
+      body.product-page .profile-text ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        color: #ffffff;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      body.product-page .profile-text .btn-profile { font-size: 16px; }
+
+      @media (max-width: 760px) {
+        body.product-page .profile-row-inner,
+        body.product-page .profile-row-inner.reverse { flex-direction: column; }
+        body.product-page .profile-media.photo {
+          align-self: auto;
+          width: 100%;
+          height: 300px;
+          order: -1;
+        }
+        body.product-page .profile-text ul { grid-template-columns: 1fr; }
+      }
+    </style>
+
+</head>
+<body class="product-page home">
+
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text"><span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span></span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1"><ul class="products-cat-list"></ul></div>
+            <div class="products-sidebar-col products-sidebar-col2"><div class="products-sub-placeholder">Selectează o categorie</div></div>
+        </div>
+    </aside>
+
+    <section class="hero-split" data-screen-label="Hero Rulouri">
+        <div class="hs-panel">
+            <div class="hs-content">
+                <h1 class="hs-title hs-title-stack"><span class="t-navy">Rulouri și Sisteme</span> <span class="t-red">de Umbrire</span></h1>
+                <p class="hs-sub">Rulouri aluminiu manuale și motorizate, jaluzele verticale și tip rulou — protecție solară și control al luminii.</p>
+                <ul class="hs-checks">
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Protecție solară eficientă</li>
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Control al luminii și intimitate</li>
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Manuale sau motorizate</li>
+                </ul>
+                <div class="hs-actions">
+                    <a href="#manuale" class="hs-btn hs-btn-primary"><span class="hs-label">Vezi tipurile de produse</span> <svg class="hs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a href="#" data-products-open class="hs-btn hs-btn-navy"><span class="hs-label">Vezi produsele</span> <svg class="hs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="hs-media">
+            <img src="assets/images/categorii/rulouri.png" alt="Rulou exterior pe fereastră — COSTI SYSTEM" fetchpriority="high">
+        </div>
+    </section>
+
+    <section id="manuale" class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Rulouri Aluminiu - Acționare Manuală</h2>
+                <p>Rulourile aluminiu cu acționare manuală sunt soluția simplă și durabilă pentru protecție solară și intimitate. Lamelele de 39 mm oferă protecție eficientă, iar acționarea manuală este fiabilă și ușor de întreținut.</p>
+                <div class="specs-title">Caracteristici principale:</div>
+                <ul>
+                    <li>Lamele aluminiu 39 mm</li>
+                    <li>Acționare manuală</li>
+                    <li>Protecție solară și intimitate</li>
+                    <li>Soluție simplă și durabilă</li>
+                </ul>
+                <p>Perfect pentru clienții care apreciază simplitatea și fiabilitatea unei soluții dovedite.</p>
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20rulouri%20manuale." class="btn-profile" target="_blank" rel="noopener noreferrer">Solicită ofertă rulouri manuale</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/upload-images/rulou%20exterior.jpg" alt="Rulou exterior manual" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="motorizate" class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Rulouri Motorizate - Telecomandă</h2>
+                <p>Rulourile motorizate cu telecomandă aduc confort și modernitate în locuința ta. Motorul electric silențios și comanda la distanță permit control ușor, iar integrarea în automatizări îți oferă control complet.</p>
+                <div class="specs-title">Caracteristici principale:</div>
+                <ul>
+                    <li>Lamele aluminiu 39 mm</li>
+                    <li>Motor electric cu comandă la distanță</li>
+                    <li>Confort sporit</li>
+                    <li>Integrabile în automatizări</li>
+                </ul>
+                <p>Soluție de confort pentru clienții care valorează tehnologia și controlul automatizat.</p>
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20rulouri%20motorizate." class="btn-profile" target="_blank" rel="noopener noreferrer">Solicită ofertă rulouri motorizate</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/upload-images/rulou%20exterior%20sectionat.jpg" alt="Rulou exterior motorizat - secțiune" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="jaluzele-verticale" class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Jaluzele Verticale</h2>
+                <p>Jaluzelele verticale oferă reglaj precis al luminii și sunt disponibile într-o gamă largă de culori. Potrivite pentru spații mari, cu întreținere ușoară și control complet asupra luminii interioare.</p>
+                <div class="specs-title">Caracteristici principale:</div>
+                <ul>
+                    <li>Reglaj precis al luminii</li>
+                    <li>Disponibile în multiple culori</li>
+                    <li>Potrivite pentru spații mari</li>
+                    <li>Întreținere ușoară</li>
+                </ul>
+                <p>Alegerea pentru spații mari care necesită control precis al luminii și varietate de culori.</p>
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20jaluzele%20verticale." class="btn-profile" target="_blank" rel="noopener noreferrer">Solicită ofertă jaluzele verticale</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/upload-images/jaluzele%20verticale.jpg" alt="Jaluzele verticale" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="jaluzele-rulou" class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Jaluzele Tip Rulou</h2>
+                <p>Jaluzelele tip rulou sunt un sistem compact cu gamă largă de culori pentru orice stil de decor. Control bun al luminii și montaj simplu le fac alegerea ideală pentru cei care caută o soluție rapidă și modernă.</p>
+                <div class="specs-title">Caracteristici principale:</div>
+                <ul>
+                    <li>Sistem compact</li>
+                    <li>Gamă largă de culori</li>
+                    <li>Control bun al luminii</li>
+                    <li>Montaj simplu</li>
+                </ul>
+                <p>Perfect pentru clienții care doresc o soluție rapidă, modernă și ușor de instalat.</p>
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20jaluzele%20rulou." class="btn-profile" target="_blank" rel="noopener noreferrer">Solicită ofertă jaluzele rulou</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/upload-images/jaluzele%20tip%20rulou.jpg" alt="Jaluzele tip rulou" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Header transparent peste hero; devine solid la scroll
+      (function () {
+        var h = document.querySelector('body.home .site-header');
+        if (!h) return;
+        function onScroll() { h.classList.toggle('scrolled', window.scrollY > 60); }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+</body>
+</html>

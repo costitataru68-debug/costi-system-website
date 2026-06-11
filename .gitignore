@@ -1,0 +1,12 @@
+# Arhive mari / backup-uri (peste limita GitHub de 100MB sau inutile pe web)
+*.zip
+
+# Fișiere sistem
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Unelte locale / editor
+.claude/
+.vs/
+*.user

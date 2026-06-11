@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despre Noi - COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Despre COSTI SYSTEM - firmă specializată în termopane și uși PVC din Bacău. Istoricul, valorile și echipa noastră.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* ====================================================
+         HERO DESPRE — poza de pe Acasă ca fundal, cu efect de
+         dezvăluire prin scroll (parallax fix): imaginea stă pe loc
+         iar secțiunea „alunecă” peste ea, așa că poza se dezvăluie
+         treptat exact și numai cât ține această secțiune.
+         ==================================================== */
+      .pp-hero.pp-hero-parallax {
+        min-height: 82svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(60px, 10vh, 120px) 40px;
+        /* fundal deschis ca pe Acasă — poza se vede luminoasă, doar un voal jos */
+        background:
+          linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, transparent 58%, rgba(13,27,42,0.30) 100%),
+          url('assets/images/poze site fundal/hero-casa-ceata.png') center center / cover no-repeat fixed;
+      }
+      /* TITLU — identic cu hero-ul de pe Acasă: bicolor (bleumarin + roșu) cu halou alb */
+      .pp-hero.pp-hero-parallax h1 {
+        font-size: clamp(2.4rem, 5.6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: #fff;
+        text-shadow: 0 2px 24px rgba(255,255,255,0.55), 0 1px 3px rgba(255,255,255,0.9);
+        text-wrap: balance;
+      }
+      .pp-hero.pp-hero-parallax h1 .t-navy { color: var(--color-secondary); -webkit-text-fill-color: var(--color-secondary); }
+      .pp-hero.pp-hero-parallax h1 .t-red  { color: var(--color-primary);   -webkit-text-fill-color: var(--color-primary); }
+      @media (prefers-reduced-motion: no-preference) {
+        .pp-hero.pp-hero-parallax h1 { animation: ppHeroIn 0.85s cubic-bezier(.22,.61,.36,1) both; }
+        .pp-hero.pp-hero-parallax .pp-hero-sub { animation: ppHeroIn 0.85s cubic-bezier(.22,.61,.36,1) 0.12s both; }
+        @keyframes ppHeroIn { from { transform: translateY(30px); } to { transform: none; } }
+      }
+      /* păstrăm accentul roșu din colț (semnătura brandului), peste imagine */
+      .pp-hero.pp-hero-parallax::after {
+        clip-path: polygon(88% 0, 100% 0, 100% 40%);
+        opacity: 0.92;
+      }
+      .pp-hero.pp-hero-parallax .pp-hero-sub {
+        color: var(--color-secondary);
+        font-weight: 600;
+        text-shadow: 0 1px 14px rgba(255,255,255,0.9), 0 1px 2px rgba(255,255,255,0.8);
+      }
+      /* Mobile: background-attachment: fixed e instabil pe touch —
+         revenim la scroll normal, dar păstrăm imaginea ca fundal. */
+      @media (max-width: 768px) {
+        .pp-hero.pp-hero-parallax {
+          min-height: 66svh;
+          background:
+            linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, transparent 58%, rgba(13,27,42,0.32) 100%),
+            url('assets/images/poze site fundal/hero-casa-ceata.png') center center / cover no-repeat scroll;
+        }
+      }
+
+      /* ====================================================
+         DESPRE — conținut restructurat, profesional, on-brand
+         ==================================================== */
+      .about-section {
+        padding-top: clamp(56px, 7vw, 92px);
+        padding-bottom: clamp(40px, 5vw, 72px);
+      }
+      .about-intro {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .about-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: 16px;
+      }
+      .about-eyebrow::before,
+      .about-eyebrow::after {
+        content: '';
+        width: 26px;
+        height: 2px;
+        background: var(--color-primary);
+        opacity: 0.45;
+      }
+      .about-lead {
+        font-size: clamp(1.15rem, 1.7vw, 1.42rem);
+        line-height: 1.6;
+        color: var(--color-secondary);
+        font-weight: 500;
+        margin: 0 0 18px;
+      }
+      .about-lead strong { color: var(--color-primary); }
+      .about-intro .about-text {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: #46505f;
+        margin: 0;
+      }
+
+      .about-blocks {
+        max-width: 1000px;
+        margin: clamp(40px, 5vw, 66px) auto 0;
+      }
+      .about-h2 {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+        color: var(--color-secondary);
+        margin: 0 0 18px;
+      }
+      .about-h2::before {
+        content: '';
+        width: 30px;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--color-primary);
+        flex: 0 0 auto;
+      }
+
+      .about-mission {
+        background: #fff;
+        border: 1px solid #e7edf4;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 12px;
+        padding: clamp(24px, 3vw, 36px);
+        box-shadow: var(--shadow-sm);
+        margin-bottom: clamp(36px, 4.5vw, 58px);
+      }
+      .about-mission p {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: #46505f;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px 22px;
+        margin-bottom: clamp(36px, 4.5vw, 58px);
+      }
+      .why-card {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        background: #fff;
+        border: 1px solid #e7edf4;
+        border-radius: 10px;
+        padding: 18px 20px;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .why-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: #d4dded;
+      }
+      .why-check {
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        color: #fff;
+        display: grid;
+        place-items: center;
+      }
+      .why-check svg { width: 16px; height: 16px; }
+      .why-card-text { min-width: 0; }
+      .why-card-text strong {
+        display: block;
+        color: var(--color-secondary);
+        font-size: 1.02rem;
+        margin-bottom: 3px;
+      }
+      .why-card-text span {
+        color: #5a6472;
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .about-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(28px, 3.4vw, 48px);
+      }
+      .about-cols p {
+        font-size: 1.02rem;
+        line-height: 1.75;
+        color: #46505f;
+        margin: 0 0 12px;
+      }
+      .about-cols p:last-child { margin-bottom: 0; }
+      .about-cols a { color: var(--color-primary); font-weight: 600; }
+
+      @media (max-width: 760px) {
+        .why-grid,
+        .about-cols { grid-template-columns: 1fr; }
+      }
+
+      /* ====================================================
+         VALORI — bandă albastră premium, titlu bicolor
+         (Valorile = albastru, Noastre = roșu), carduri albe
+         care ies în evidență.
+         ==================================================== */
+      .values-section {
+        background: linear-gradient(180deg, #e7effa 0%, #cddff3 100%);
+        position: relative;
+      }
+      .values-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 96px; height: 4px;
+        border-radius: 0 0 4px 4px;
+        background: linear-gradient(90deg,
+          var(--color-secondary) 0 50%, var(--color-primary) 50% 100%);
+      }
+      .values-title {
+        text-align: center;
+        font-size: clamp(2rem, 3.4vw, 2.6rem);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        margin: 0 0 40px;
+      }
+      .values-title .t-navy { color: var(--color-secondary); }
+      .values-title .t-red { color: var(--color-primary); }
+      .values-title::after {
+        content: '';
+        display: block;
+        width: 76px; height: 4px;
+        margin: 16px auto 0;
+        border-radius: 4px;
+        background: linear-gradient(90deg,
+          var(--color-secondary) 0 50%, var(--color-primary) 50% 100%);
+      }
+      .values-section .card {
+        border: 1px solid rgba(255,255,255,0.75);
+        box-shadow: 0 18px 42px -22px rgba(18,40,77,0.38), 0 2px 6px rgba(18,40,77,0.06);
+      }
+      .values-section .card:hover {
+        box-shadow: 0 28px 56px -22px rgba(18,40,77,0.46);
+      }
+
+      /* ====================================================
+         ARTISTIC — accente bicolore (roșu + albastru sigla)
+         ==================================================== */
+      /* titluri de secțiune bicolore */
+      .about-h2 .t-red  { color: var(--color-primary); }
+      .about-h2 .t-navy { color: var(--color-secondary); }
+
+      /* fundal artistic: două halouri moi (roșu + bleumarin) */
+      .about-section { position: relative; overflow: clip; }
+      .about-section::before,
+      .about-section::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        filter: blur(8px);
+      }
+      .about-section::before {
+        top: -120px; right: -140px;
+        width: 460px; height: 460px;
+        background: radial-gradient(circle at 40% 40%, rgba(200,25,27,0.10), transparent 62%);
+      }
+      .about-section::after {
+        bottom: -160px; left: -180px;
+        width: 540px; height: 540px;
+        background: radial-gradient(circle at 60% 40%, rgba(18,40,77,0.10), transparent 64%);
+      }
+      .about-section .container { position: relative; z-index: 1; }
+
+      /* eyebrow → pastilă bicoloră */
+      .about-eyebrow {
+        padding: 7px 16px;
+        border-radius: 50px;
+        background: rgba(200,25,27,0.07);
+      }
+      .about-eyebrow::before,
+      .about-eyebrow::after { display: none; }
+
+      /* lead cu accent bicolor sub el */
+      .about-intro .about-lead { position: relative; }
+
+      /* MISIUNEA — panou bleumarin premium, artistic, cu accent roșu */
+      .about-mission {
+        position: relative;
+        background: linear-gradient(135deg, #173558 0%, #0d1f3b 100%);
+        border: none;
+        border-left: 5px solid var(--color-primary);
+        border-radius: 16px;
+        padding: clamp(30px, 3.6vw, 48px) clamp(28px, 3.4vw, 52px);
+        box-shadow: 0 26px 56px -30px rgba(13,31,59,0.70);
+        overflow: hidden;
+      }
+      .about-mission p { color: rgba(255,255,255,0.92); position: relative; z-index: 1; }
+      .about-mission::before {
+        content: '\201D';
+        position: absolute;
+        top: -46px; right: 22px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 220px;
+        line-height: 1;
+        color: rgba(255,255,255,0.06);
+      }
+      .about-mission::after {
+        content: '';
+        position: absolute;
+        bottom: -45%; left: -8%;
+        width: 280px; height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(200,25,27,0.32), transparent 70%);
+        pointer-events: none;
+      }
+
+      /* cardurile „de ce" — bara superioară bicoloră la hover */
+      .why-card { position: relative; overflow: hidden; }
+      .why-card::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 3px;
+        background: linear-gradient(90deg, var(--color-primary) 0 50%, var(--color-secondary) 50% 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(.22,.61,.36,1);
+      }
+      .why-card:hover::after { transform: scaleX(1); }
+
+      /* divider artistic bicolor între blocuri */
+      .about-cols { position: relative; padding-top: clamp(28px, 3.4vw, 44px); }
+      .about-cols::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 84px; height: 4px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--color-secondary) 0 50%, var(--color-primary) 50% 100%);
+      }
+    </style>
+</head>
+<body class="product-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span>
+                    </span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR PRODUSE -->
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1">
+                <ul class="products-cat-list"></ul>
+            </div>
+            <div class="products-sidebar-col products-sidebar-col2">
+                <div class="products-sub-placeholder">Selectează o categorie</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO -->
+    <section class="pp-hero pp-hero-parallax" data-screen-label="Hero Despre">
+        <div class="pp-hero-inner">
+            <h1><span class="t-navy">Despre</span> <span class="t-red">COSTI SYSTEM</span></h1>
+            <p class="pp-hero-sub">Pasiune pentru calitate și dedicare pentru clienții noștri</p>
+        </div>
+    </section>
+
+    <!-- STATISTICI (ca pe Acasă) -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-target="5000" data-suffix="+">0</span>
+                <span class="stat-label">Lucrări Finalizate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="20" data-suffix="+" style="font-family: &quot;Space Grotesk&quot;">0</span>
+                <span class="stat-label">Ani Experiență</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="98" data-suffix="%">0</span>
+                <span class="stat-label">Clienți Mulțumiți</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESPRE -->
+    <section class="section about-section">
+        <div class="container">
+            <div class="about-intro">
+                <span class="about-eyebrow">Despre Noi</span>
+                <p class="about-lead"><strong>COSTI SYSTEM</strong> este o firmă specializată în comercializarea și montajul de termopane și uși PVC, cu sediul în Bacău. De-a lungul anilor, am construit o reputație solidă bazată pe calitatea produselor, profesionalismul echipei și respectul față de fiecare client.</p>
+                <p class="about-text">Lucrăm exclusiv cu profile premium provenite de la producători recunoscuți: <strong>Salamander</strong>, <strong>Ramplast</strong> și <strong>Sig Plast</strong> — branduri sinonim cu durabilitatea, eficiența energetică și designul modern.</p>
+            </div>
+
+            <div class="about-blocks">
+                <!-- Misiunea -->
+                <h2 class="about-h2"><span class="t-navy">Misiunea</span>&nbsp;<span class="t-red">Noastră</span></h2>
+                <div class="about-mission">
+                    <p>Ne dorim să oferim fiecărui client soluții complete pentru locuința sa: de la consultanță tehnică inițială, măsurători gratuite la domiciliu, până la montaj profesional și service post-vânzare. Credem că o lucrare de calitate înseamnă mai mult decât produse bune — înseamnă atenție la detalii, comunicare transparentă și respectarea termenelor.</p>
+                </div>
+
+                <!-- De ce să ne alegi -->
+                <h2 class="about-h2"><span class="t-navy">De Ce să ne</span>&nbsp;<span class="t-red">Alegi</span></h2>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Experiență vastă</strong><span>Ani de zile în domeniul termopanelor și ușilor PVC.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Produse premium</strong><span>Colaborăm doar cu producători de top din Europa.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Echipă calificată</strong><span>Montatori profesioniști, instruiți și certificați.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Garanție extinsă</strong><span>Până la 10 ani pe produse și manoperă.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Prețuri corecte</strong><span>Ofertă personalizată detaliată, fără costuri ascunse și fără surprize la final.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Servicii complete</strong><span>Măsurători gratuite, transport, montaj și service.</span></span>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                        <span class="why-card-text"><strong>Showroom modern</strong><span>Te invităm să ne vizitezi în Piața Sud din Bacău.</span></span>
+                    </div>
+                </div>
+
+                <!-- Showroom + Echipă -->
+                <div class="about-cols">
+                    <div>
+                        <h2 class="about-h2"><span class="t-navy">Showroom-ul</span>&nbsp;<span class="t-red">Nostru</span></h2>
+                        <p>Te invităm să ne vizitezi la showroom-ul din Bacău, situat pe <strong>Calea Mărășești nr. 98 (Bloc 98)</strong>, unde poți vedea pe viu modele de ferestre, uși și sisteme de umbrire. Echipa noastră îți va oferi consultanță personalizată și răspunsuri la toate întrebările tale.</p>
+                        <p>Programul de vizionare este flexibil — sună-ne la <a href="tel:0758271007"><strong>0758 271 007</strong></a> pentru a stabili o întâlnire.</p>
+                    </div>
+                    <div>
+                        <h2 class="about-h2"><span class="t-navy">Echipa</span>&nbsp;<span class="t-red">Noastră</span></h2>
+                        <p>Suntem o echipă de profesioniști dedicați, cu experiență vastă în industria PVC. De la consultanții care te ghidează în alegerea soluției optime, până la montatorii cu mâini de aur care te ajută să te bucuri de o lucrare ireproșabilă — fiecare membru al echipei COSTI SYSTEM contribuie la succesul proiectelor noastre.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALORI -->
+    <section class="section values-section">
+        <div class="container">
+            <h2 class="values-title"><span class="t-navy">Valorile</span> <span class="t-red">Noastre</span></h2>
+            <div class="cards-grid cards-grid-4">
+                <div class="card">
+                    <div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+                    <h3>Calitate</h3>
+                    <p>Nu facem compromisuri când vine vorba de materiale și execuție.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                    <h3>Integritate</h3>
+                    <p>Comunicare onestă și prețuri transparente, fără costuri ascunse.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                    <h3>Punctualitate</h3>
+                    <p>Respectăm termenele convenite și planificăm fiecare etapă.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                    <h3>Profesionalism</h3>
+                    <p>Echipă calificată și instrumente moderne pentru rezultate impecabile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

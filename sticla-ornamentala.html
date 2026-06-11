@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticlă Ornamentală - Modele decorative pentru ferestre și uși | COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Sticlă ornamentală în Bacău: modele Delta, Măslin, Spic, Chinchilla, Sablată și Satinată — variante simple și bronz pentru ferestre și uși PVC sau aluminiu.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* HERO — premium navy centrat, ca pe restul paginilor de produse */
+        .sticla-hero {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(135deg, #12284d 0%, #0b1a32 100%);
+            padding: clamp(48px, 7vw, 84px) 40px clamp(54px, 8vw, 92px);
+            overflow: hidden;
+        }
+        .sticla-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(150deg, #e74c3c 0%, #c8191b 100%);
+            clip-path: polygon(85% 0, 100% 0, 100% 48%);
+            pointer-events: none;
+        }
+        .sticla-hero h1 {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(2.2rem, 4.6vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0 0 16px 0;
+            line-height: 1.06;
+        }
+        .sticla-hero p {
+            position: relative;
+            z-index: 1;
+            font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 60ch;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Secțiuni — alternanță alb / gri, ca pe site */
+        .sticla-section {
+            padding: clamp(54px, 7vw, 84px) 40px;
+        }
+        .sticla-section-light { background-color: #ffffff; }
+        .sticla-section-dark  { background-color: #f5f5f5; }
+
+        .sticla-section-header {
+            text-align: center;
+            margin-bottom: clamp(36px, 5vw, 52px);
+        }
+        .sticla-section-header h2 {
+            font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+            font-weight: 800;
+            color: var(--color-secondary, #12284d);
+            letter-spacing: -0.01em;
+            margin: 0 0 12px 0;
+            line-height: 1.15;
+        }
+        .sticla-section-header p {
+            font-size: 16px;
+            color: var(--color-body-soft, #4a5468);
+            margin: 0;
+        }
+
+        /* Grid de modele — galerie mai largă, 3 coloane pe desktop */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* Card model — pattern din design system: card alb, umbră, hover-lift,
+           bordură roșie sus la hover */
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #e6e6e6;
+            border-top: 3px solid transparent;
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+            text-align: left;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.08));
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.15));
+            border-top-color: var(--color-primary, #c8191b);
+        }
+        .glass-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 0;
+            margin: 0;
+            display: block;
+        }
+        .glass-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-secondary, #12284d);
+            margin: 16px 18px 4px 18px;
+        }
+        .glass-card p {
+            font-size: 13.5px;
+            color: var(--color-body-soft, #6a7480);
+            margin: 0 18px 18px 18px;
+            line-height: 1.45;
+        }
+
+        /* Divider — ascuns; alternanța de fundal separă secțiunile */
+        .sticla-divider { display: none; }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                max-width: 760px;
+            }
+            .glass-card img { height: 230px; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .sticla-section { padding: 44px 20px; }
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 420px;
+            }
+            .glass-card img { height: 240px; }
+        }
+
+        /* Lightbox pentru modelele de sticlă */
+        .glass-card img { cursor: zoom-in; }
+        .glass-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(11, 26, 50, 0.88);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .glass-lightbox.open { display: flex; }
+        .glass-lightbox figure {
+            margin: 0;
+            text-align: center;
+            max-width: min(92vw, 1100px);
+        }
+        .glass-lightbox img {
+            max-width: 100%;
+            max-height: 82vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+            display: block;
+            margin: 0 auto;
+        }
+        .glass-lightbox figcaption {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 16px;
+            letter-spacing: 0.2px;
+        }
+        .glass-lightbox-close {
+            position: absolute;
+            top: 22px;
+            right: 26px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: none;
+            font-size: 26px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+        .glass-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+    </style>
+
+</head>
+<body class="product-page home">
+
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span>
+                    </span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1">
+                <ul class="products-cat-list"></ul>
+            </div>
+            <div class="products-sidebar-col products-sidebar-col2">
+                <div class="products-sub-placeholder">Selectează o categorie</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO -->
+    <section class="hero-split" data-screen-label="Hero Sticlă Ornamentală">
+        <div class="hs-panel">
+            <div class="hs-content">
+                <h1 class="hs-title"><span class="t-navy">Sticlă</span> <span class="t-red">Ornamentală</span></h1>
+                <p class="hs-sub">Soluții decorative și funcționale pentru ferestre și uși — intimitate și stil.</p>
+                <ul class="hs-checks">
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Aspect decorativ elegant</li>
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Intimitate sporită</li>
+                    <li><span class="hs-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Pentru ferestre și uși</li>
+                </ul>
+                <div class="hs-actions">
+                    <a href="#sticla-simpla" class="hs-btn hs-btn-primary"><span class="hs-label">Vezi tipurile de produse</span> <svg class="hs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a href="#" data-products-open class="hs-btn hs-btn-navy"><span class="hs-label">Vezi produsele</span> <svg class="hs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="hs-media">
+            <img src="assets/images/categorii/sticla.png" alt="Sticlă ornamentală decorativă — COSTI SYSTEM" fetchpriority="high">
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 1: STICLĂ SIMPLĂ -->
+    <section id="sticla-simpla" class="sticla-section sticla-section-light">
+        <div class="sticla-section-header">
+            <h2>Sticlă Simplă</h2>
+            <p>Modele decorative cu transparență</p>
+        </div>
+        <div class="grid-container">
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/delta-simpla.jpg" alt="Sticlă Simplă model Delta" loading="lazy">
+                <h3>Delta</h3>
+                <p>Sticlă clară cu design Delta</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/maslin-simpla.jpg" alt="Sticlă Simplă model Măslin" loading="lazy">
+                <h3>Măslin</h3>
+                <p>Sticlă clară cu design Măslin</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/spic-simpla.jpg" alt="Sticlă Simplă model Spic" loading="lazy">
+                <h3>Spic</h3>
+                <p>Sticlă clară cu design Spic</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/chinchilla-simpla.jpg" alt="Sticlă Simplă model Chinchilla" loading="lazy">
+                <h3>Chinchilla</h3>
+                <p>Sticlă clară cu design Chinchilla</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/sablata-simpla.jpg" alt="Sticlă Simplă Sablată" loading="lazy">
+                <h3>Sablată</h3>
+                <p>Sticlă clară cu finisaj sablat</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/satianta-simpla.jpg" alt="Sticlă Simplă Satinată" loading="lazy">
+                <h3>Satinată</h3>
+                <p>Sticlă clară cu finisaj satinat</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="sticla-divider">
+
+    <!-- SECȚIUNEA 2: STICLĂ BRONZ -->
+    <section id="sticla-bronz" class="sticla-section sticla-section-dark">
+        <div class="sticla-section-header">
+            <h2>Sticlă Bronz</h2>
+            <p>Modele decorative în nuanță caldă bronz</p>
+        </div>
+        <div class="grid-container">
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/delta-bronz.jpg" alt="Sticlă Bronz model Delta" loading="lazy">
+                <h3>Delta Bronz</h3>
+                <p>Sticlă bronz cu design Delta</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/maslin-bronz.jpg" alt="Sticlă Bronz model Măslin" loading="lazy">
+                <h3>Măslin Bronz</h3>
+                <p>Sticlă bronz cu design Măslin</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/spic-bronz.jpg" alt="Sticlă Bronz model Spic" loading="lazy">
+                <h3>Spic Bronz</h3>
+                <p>Sticlă bronz cu design Spic</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/chinchilla-bronz.jpg" alt="Sticlă Bronz model Chinchilla" loading="lazy">
+                <h3>Chinchilla Bronz</h3>
+                <p>Sticlă bronz cu design Chinchilla</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/sablata-bronz.jpg" alt="Sticlă Bronz Sablată" loading="lazy">
+                <h3>Sablată Bronz</h3>
+                <p>Sticlă bronz cu finisaj sablat</p>
+            </div>
+            <div class="glass-card">
+                <img src="assets/images/sticla-ornamentala/satianta-bronz.jpg" alt="Sticlă Bronz Satinată" loading="lazy">
+                <h3>Satinată Bronz</h3>
+                <p>Sticlă bronz cu finisaj satinat</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox sticlă ornamentală -->
+    <div class="glass-lightbox" id="glass-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <button class="glass-lightbox-close" type="button" aria-label="Închide">×</button>
+        <figure>
+            <img alt="">
+            <figcaption></figcaption>
+        </figure>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      (function () {
+        var lb = document.getElementById('glass-lightbox');
+        if (!lb) return;
+        var lbImg = lb.querySelector('img');
+        var lbCap = lb.querySelector('figcaption');
+        function open(src, alt, caption) {
+          lbImg.src = src; lbImg.alt = alt || '';
+          lbCap.textContent = caption || '';
+          lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+        function close() {
+          lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = ''; lbImg.removeAttribute('src');
+        }
+        document.querySelectorAll('.glass-card').forEach(function (card) {
+          var img = card.querySelector('img');
+          var title = card.querySelector('h3');
+          if (!img) return;
+          img.addEventListener('click', function () {
+            open(img.src, img.alt, title ? title.textContent : '');
+          });
+        });
+        lb.addEventListener('click', function (e) {
+          if (e.target === lb || e.target.classList.contains('glass-lightbox-close')) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && lb.classList.contains('open')) close();
+        });
+      })();
+    </script>
+
+    <script>
+      // Header transparent peste hero; devine solid la scroll
+      (function () {
+        var h = document.querySelector('body.home .site-header');
+        if (!h) return;
+        function onScroll() { h.classList.toggle('scrolled', window.scrollY > 60); }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+</body>
+</html>

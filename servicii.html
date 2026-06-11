@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicii - COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Serviciile COSTI SYSTEM: măsurători, fabricație, transport, montaj și garanție până la 10 ani. Soluții complete pentru tâmplărie PVC.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Layout: două coloane egale, lipite (fără ramă). Poza are exact aceeași
+         înălțime ca textul; secțiunea e cât conținutul. Fundalul (degradeu
+         albastru→alb, de sus în jos) stă SUB informații, în panoul de text. */
+      body.product-page .profile-row-light,
+      body.product-page .profile-row-dark {
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        background: none;
+      }
+      body.product-page .profile-row-inner,
+      body.product-page .profile-row-inner.reverse {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+        align-items: stretch;
+        min-height: 470px;
+      }
+
+      /* PANOUL DE TEXT — fundal degradeu sub informații */
+      body.product-page .profile-text {
+        flex: 1 1 57%;
+        min-width: 0;
+        max-width: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(32px, 3.6vw, 52px);
+        background: linear-gradient(to bottom,
+          #b9cbe6 0%, #d6e0ef 30%, #eef2f8 58%, #ffffff 100%);
+      }
+
+      /* POZA — aceeași înălțime ca textul (coloană egală, întinsă), margini drepte */
+      body.product-page .profile-media.photo {
+        position: relative;
+        flex: 1 1 50%;
+        min-width: 0;
+        align-self: stretch;
+        padding: 0;
+        margin: 0;
+        min-height: 0;
+        display: block;
+      }
+      body.product-page .profile-media.photo::before,
+      body.product-page .profile-media.photo::after { display: none; }
+      body.product-page .photo-frame {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      body.product-page .photo-frame::before,
+      body.product-page .photo-frame::after { display: none; }
+      body.product-page .profile-media.photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        object-fit: cover;
+        mix-blend-mode: normal;
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+      body.product-page .profile-row:hover .profile-media.photo img { transform: none; }
+
+      /* Poza înainte/după (etanșare) — vizibilă întreagă, încadrată pe navy */
+      body.product-page .profile-media.photo img[alt="Etanșare și chituit exterior balcon"] {
+        object-fit: contain;
+        background: linear-gradient(to bottom, #1a3c5e 0%, #12283f 100%);
+      }
+
+      /* TEXT — închis, lizibil pe fundalul deschis */
+      body.product-page .profile-text h2 {
+        color: var(--color-secondary);
+        font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+        margin-bottom: 14px;
+      }
+      body.product-page .profile-text > p {
+        color: var(--color-body-soft, #4a5468);
+        font-size: 17px;
+        line-height: 1.6;
+        max-width: 48ch;
+      }
+      body.product-page .profile-text .specs-title {
+        color: var(--color-primary);
+        font-size: 13px;
+        margin: 16px 0 10px;
+      }
+      body.product-page .profile-text ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px 20px;
+        margin: 4px 0 16px;
+      }
+      body.product-page .profile-text ul li {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-secondary);
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0 0 0 26px;
+        line-height: 1.3;
+        position: relative;
+        box-shadow: none;
+      }
+      body.product-page .profile-text ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        color: #ffffff;
+        display: grid;
+        place-items: center;
+        font-size: 10px;
+        font-weight: 800;
+      }
+      body.product-page .profile-text .btn-profile { font-size: 16px; }
+
+      /* Eticheta „SERVICIU OPȚIONAL” — accent roșu pe stânga, brand-safe */
+      body.product-page .profile-text .service-optional {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-start;
+        max-width: none;
+        margin: 0 0 16px;
+        padding: 8px 13px;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        color: var(--color-secondary);
+        background: #ffffff;
+        border: 1px solid #e6ecf3;
+        border-left: 3px solid var(--color-primary);
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.06));
+      }
+      body.product-page .profile-text .service-optional::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        flex: 0 0 auto;
+      }
+      body.product-page .profile-text .service-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+      }
+      body.product-page .profile-text .service-actions .service-optional { margin: 0; }
+
+      @media (max-width: 760px) {
+        body.product-page .profile-row-inner,
+        body.product-page .profile-row-inner.reverse { flex-direction: column; }
+        body.product-page .profile-media.photo {
+          align-self: auto;
+          width: 100%;
+          height: 300px;
+          order: -1;
+        }
+        body.product-page .profile-text ul { grid-template-columns: 1fr; }
+      }
+
+      /* ====================================================
+         HERO SERVICII — umple exact ecranul (fără scroll):
+         înălțime = 100svh minus header; imaginea acoperă tot
+         fundalul; titlu + subtitlu + butoane centrate, scalate
+         cu clamp ca să încapă mereu în viewport.
+         ==================================================== */
+      .servicii-hero {
+        height: calc(100svh - var(--header-height, 130px));
+        min-height: calc(100svh - var(--header-height, 130px));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+      }
+      .servicii-hero.hero-clean .hero-content {
+        justify-content: center;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .servicii-hero.hero-cine h1 {
+        font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+        margin-bottom: 14px;
+      }
+      .servicii-hero.hero-cine p {
+        font-size: clamp(1rem, 1.6vw, 1.35rem);
+        margin-bottom: 0;
+      }
+      .servicii-hero .hero-buttons { margin-top: 18px; }
+      /* textul nu depinde de animație — rămâne vizibil în orice context */
+      .servicii-hero .hero-content h1,
+      .servicii-hero .hero-content p,
+      .servicii-hero .hero-buttons {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      @media (max-width: 768px) {
+        .servicii-hero {
+          height: calc(100svh - var(--header-height, 80px));
+          min-height: calc(100svh - var(--header-height, 80px));
+        }
+        .servicii-hero.hero-clean .hero-content {
+          min-height: 0;
+          padding: 0 18px;
+        }
+        .servicii-hero.hero-cine h1 { font-size: clamp(1.7rem, 7vw, 2.6rem); }
+        .servicii-hero.hero-cine p { font-size: clamp(0.98rem, 3.6vw, 1.2rem); }
+        .servicii-hero .hero-buttons {
+          margin-top: 16px;
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+</head>
+<body class="product-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span>
+                    </span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR PRODUSE -->
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1">
+                <ul class="products-cat-list"></ul>
+            </div>
+            <div class="products-sidebar-col products-sidebar-col2">
+                <div class="products-sub-placeholder">Selectează o categorie</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO -->
+    <section class="hero hero-cine hero-clean servicii-hero" data-screen-label="Hero Servicii">
+        <div class="hero-media">
+            <img src="assets/images/servicii/hero-servicii.png" alt="Profil de tâmplărie pe planuri de proiectare, cu o casă modernă în fundal — COSTI SYSTEM" fetchpriority="high">
+        </div>
+        <div class="hero-scrim"></div>
+        <div class="container hero-content">
+            <h1><span class="t-navy">Serviciile</span> <span class="t-red">Noastre</span></h1>
+            <p>Soluții complete, de la măsurători și consultanță până la montaj profesional și garanție extinsă.</p>
+            <div class="hero-buttons">
+                <a href="#servicii-lista" class="btn btn-primary hero-btn">
+                    <span class="hb-label">Vezi Serviciile</span>
+                    <svg class="hb-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="contact.html" class="btn btn-secondary hero-btn">
+                    <svg class="hb-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="hb-label">Cere o Ofertă</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 1: MĂSURĂTORI ȘI CONSULTANȚĂ -->
+    <section id="servicii-lista" class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Măsurători și Consultanță Tehnică</h2>
+                <p>Echipa noastră de specialiști oferă măsurători gratuite și consultanță tehnică profesionistă pentru fiecare proiect. Analizez nevoile dumneavoastră și recomand soluțiile optime pentru izolație termică și acustică.</p>
+                <a href="contact.html" class="btn-profile">Program Măsurători</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/Folder%20nou/masuratori%20si%20consultanta%20tehnica.png" alt="Măsurători și consultanță tehnică" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 2: FABRICAREA TÂMPLĂRIEI - TEXT DREAPTA, IMAGINE STÂNGA -->
+    <section class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Fabricarea Tâmplăriei</h2>
+                <p>Fabricarea se realizează sub forma dorită, conform planurilor și specificațiilor exacte ale proiectului. Utilizăm materiale premium de la Salamander, Ramplast și Sig Plast, garantând calitate și durabilitate maximă.</p>
+                <a href="despre.html" class="btn-profile">Afla mai mult</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/Folder%20nou/fabricarea%20taplariei.jpg" alt="Fabricarea tâmplăriei în atelier" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 3: TRANSPORT -->
+    <section class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Transport Sigur</h2>
+                <p>Asigurăm transportul produselor la locul dvs. în condiții sigure și în termenul convenit. Echipa noastră se grijește de manipulare corectă și protecție completă a produselor în timpul transportului.</p>
+                <a href="contact.html" class="btn-profile">Detalii transport</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/Folder%20nou/transport%20sigur.png" alt="Transport sigur al produselor" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 4: MONTAJ - TEXT DREAPTA, IMAGINE STÂNGA -->
+    <section class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Montaj Profesional</h2>
+                <p>Montajul este realizat de echipe profesioniste cu experiență și certificări în domeniu. Asigurăm o instalare corectă, respectând toate normele tehnice. Folosim bandă de etanșare Soudal pentru montaj, în funcție de cerințe specifice. Un montaj bine făcut înseamnă performanță și durabilitate pe termen lung.</p>
+                <a href="despre.html" class="btn-profile">Echipa noastră</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/Folder%20nou/montaj%20profesionist.png" alt="Montaj profesional" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 6: ETANȘARE ȘI CHITUIT EXTERIOR BALCON -->
+    <section class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Etanșare și Chituit Exterior Balcon</h2>
+                <p>După demontarea ferestrei vechi, pe balconul exterior rămâne spumă poliuretanică. Realizăm o etanșare profesională a zonei, chituind cu ciment structural de calitate, pentru o barieră completă împotriva infiltrațiilor de apă și a umidității.</p>
+                <ul>
+                    <li>Curățare și preparare suprafață</li>
+                    <li>Chituit exterior cu ciment de calitate</li>
+                    <li>Finisaj profesional</li>
+                    <li>Protecție împotriva apei</li>
+                </ul>
+                <div class="service-actions">
+                    <span class="service-optional">Serviciu opțional · se plătește separat</span>
+                    <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." class="btn-profile" target="_blank" rel="noopener noreferrer">Cere ofertă</a>
+                </div>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/servicii/etansare-exterior.png" alt="Etanșare și chituit exterior balcon" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 7: IZOLAȚIE TERMICĂ BALCON - TEXT DREAPTA, IMAGINE STÂNGA -->
+    <section class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Izolație Termică Balcon</h2>
+                <p>Înainte de montarea geamului nou, realizăm izolație termică și acustică profesională a balconului. Intrăm prin spațiul liber (fără nevoie de schelă) și aplicăm material izolant de calitate, care reduce pierderile de căldură și zgomotul exterior.</p>
+                <ul>
+                    <li>Izolație termică de calitate ridicată</li>
+                    <li>Izolație acustică</li>
+                    <li>Lucru din interior (fără schelă)</li>
+                    <li>Finisaj profesional</li>
+                </ul>
+                <div class="service-actions">
+                    <span class="service-optional">Serviciu opțional · se plătește separat</span>
+                    <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." class="btn-profile" target="_blank" rel="noopener noreferrer">Cere ofertă</a>
+                </div>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/servicii/izolatie-balcon.png" alt="Izolație termică balcon" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 8: REPARAȚII ȘI FINISAJ INTERIOR -->
+    <section class="profile-row profile-row-light">
+        <div class="profile-row-inner">
+            <div class="profile-text">
+                <h2>Reparații și Finisaj Interior</h2>
+                <p>După montarea completă a geamului, realizăm reparații și finisaj interior. Aceasta include corecția eventualelor defecte ale zugrăvelii sau gipsului, netezirea suprafețelor și aplicarea unei finisări profesionale.</p>
+                <ul>
+                    <li>Reparații gips/zugrăveli</li>
+                    <li>Netezire și pregătire suprafață</li>
+                    <li>Finisaj interior profesional</li>
+                    <li>Curățare completă</li>
+                </ul>
+                <div class="service-actions">
+                    <span class="service-optional">Serviciu opțional · se plătește separat</span>
+                    <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." class="btn-profile" target="_blank" rel="noopener noreferrer">Cere ofertă</a>
+                </div>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/servicii/reparatii-interior.png" alt="Reparații și finisaj interior" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE 5: GARANȚIE -->
+    <section class="profile-row profile-row-dark">
+        <div class="profile-row-inner reverse">
+            <div class="profile-text">
+                <h2>Garanție Extinsă</h2>
+                <p>Oferim garanție de până la 10 ani, în funcție de produs, pentru siguranța și liniștea ta. Garanția acoperă defecte de fabricație, deteriorări accidentale și probleme de funcționare, cu suport tehnic rapid și fiabil.</p>
+                <a href="contact.html" class="btn-profile">Termeni garanție</a>
+            </div>
+            <div class="profile-media photo">
+                <figure class="photo-frame">
+                    <img src="assets/images/Folder%20nou/garantie%20asigurata.png" alt="Garanție asigurată" loading="lazy">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

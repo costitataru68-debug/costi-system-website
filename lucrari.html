@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucrările Noastre - COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Portofoliul COSTI SYSTEM - proiecte de termopane, uși PVC și sisteme de umbrire realizate de-a lungul anilor în Bacău și împrejurimi.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* ====================================================
+         HERO LUCRĂRI — identic cu hero-urile de pe Servicii /
+         Furnizori / Oferte: umple exact ecranul (fără scroll),
+         imaginea acoperă tot fundalul, titlu + subtitlu + butoane
+         centrate, scalate cu clamp.
+         ==================================================== */
+      .servicii-hero {
+        height: calc(100svh - var(--header-height, 130px));
+        min-height: calc(100svh - var(--header-height, 130px));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+      }
+      .servicii-hero.hero-clean .hero-content {
+        justify-content: center;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .servicii-hero.hero-cine h1 {
+        font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+        margin-bottom: 14px;
+      }
+      .servicii-hero.hero-cine p {
+        font-size: clamp(1rem, 1.6vw, 1.35rem);
+        margin-bottom: 0;
+      }
+      .servicii-hero .hero-buttons { margin-top: 18px; }
+      /* fundal mult mai estompat (văl alb mai opac) — textul rămâne lizibil */
+      .servicii-hero .hero-scrim {
+        background:
+          radial-gradient(70% 55% at 50% 48%, rgba(247,249,252,0.55) 0%, rgba(247,249,252,0.40) 45%, rgba(247,249,252,0.30) 75%),
+          linear-gradient(to bottom, rgba(247,249,252,0.62) 0%, rgba(247,249,252,0.60) 100%);
+      }
+      .servicii-hero .hero-content h1,
+      .servicii-hero .hero-content p,
+      .servicii-hero .hero-buttons {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      @media (max-width: 768px) {
+        .servicii-hero {
+          height: calc(100svh - var(--header-height, 80px));
+          min-height: calc(100svh - var(--header-height, 80px));
+        }
+        .servicii-hero.hero-clean .hero-content {
+          min-height: 0;
+          padding: 0 18px;
+        }
+        .servicii-hero.hero-cine h1 { font-size: clamp(1.7rem, 7vw, 2.6rem); }
+        .servicii-hero.hero-cine p { font-size: clamp(0.98rem, 3.6vw, 1.2rem); }
+        .servicii-hero .hero-buttons {
+          margin-top: 16px;
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+</head>
+<body class="product-page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span>
+                    </span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR PRODUSE -->
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1">
+                <ul class="products-cat-list"></ul>
+            </div>
+            <div class="products-sidebar-col products-sidebar-col2">
+                <div class="products-sub-placeholder">Selectează o categorie</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO -->
+    <section class="hero hero-cine hero-clean servicii-hero" data-screen-label="Hero Lucrări">
+        <div class="hero-media">
+            <img src="assets/images/servicii/hero-lucrari.png" alt="Planuri tehnice de tâmplărie pe un birou cu rigle, șubler și o cafea — COSTI SYSTEM" fetchpriority="high" style="opacity: 0.9">
+        </div>
+        <div class="hero-scrim"></div>
+        <div class="container hero-content">
+            <h1><span class="t-navy">Lucrările</span> <span class="t-red">Noastre</span></h1>
+            <p>Proiecte de tâmplărie PVC și aluminiu realizate de-a lungul anilor în Bacău și împrejurimi.</p>
+            <div class="hero-buttons">
+                <a href="#galerie" class="btn btn-primary hero-btn">
+                    <span class="hb-label">Vezi Lucrările</span>
+                    <svg class="hb-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="contact.html" class="btn btn-secondary hero-btn">
+                    <svg class="hb-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="hb-label">Cere o Ofertă</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE MASONRY -->
+    <section id="galerie" class="section">
+        <div class="container">
+            <div class="lucrari-masonry" id="lucrari-masonry">
+
+                <!-- Pozele reale din assets/images/lucrari/, ordonate cele mai noi primele.
+                     Layout masonry (4/3/2/1 coloane), object-fit: contain (poza completă), lazy loading. -->
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/18ddf9e5-b53b-4ffc-a0d8-dafcec01618e.jpg" alt="Lucrare COSTI SYSTEM 1 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 1</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/ffa3de8b-4236-488a-a663-013632d209c6.jpg" alt="Lucrare COSTI SYSTEM 2 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 2</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/9ea4407a-bc11-453d-91fd-912ecbfadd37.jpg" alt="Lucrare COSTI SYSTEM 3 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 3</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/776e884e-6a9b-4d66-a756-5400a34e3d01.jpg" alt="Lucrare COSTI SYSTEM 4 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 4</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/ca0c267c-c13e-47ff-bf34-082451d91596.jpg" alt="Lucrare COSTI SYSTEM 5 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 5</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/92060832-fe0a-440a-af62-d5f38c998537.jpg" alt="Lucrare COSTI SYSTEM 6 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 6</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/0ada2bba-b369-41dc-a0b3-8e2afc6f0585.jpg" alt="Lucrare COSTI SYSTEM 7 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 7</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/1d767691-54fd-4fd1-a53d-4fe3da51c655.jpg" alt="Lucrare COSTI SYSTEM 8 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 8</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/52a71289-1f61-4566-a1ae-841a420a1886.jpg" alt="Lucrare COSTI SYSTEM 9 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 9</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/0ec66b6a-4c45-4094-bad4-b6d789994903.jpg" alt="Lucrare COSTI SYSTEM 10 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 10</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/2d25fb97-2f2f-4827-93f9-ddd2ca55a7aa.jpg" alt="Lucrare COSTI SYSTEM 11 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 11</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/afeff68b-8f4e-43a7-ab17-e63b4fb39efa.jpg" alt="Lucrare COSTI SYSTEM 12 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 12</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/9b8e09b4-37c2-41db-b66c-aa28bc21d25d.jpg" alt="Lucrare COSTI SYSTEM 13 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 13</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/41d102cf-1ad9-4be0-ab97-be7126b1642a.jpg" alt="Lucrare COSTI SYSTEM 14 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 14</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/72f15f7d-f38a-457b-a02b-b2e488ac48f4.jpg" alt="Lucrare COSTI SYSTEM 15 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 15</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/2bbfc140-d251-4f21-9df5-f6cc6f7b24f5.jpg" alt="Lucrare COSTI SYSTEM 16 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 16</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/351dd902-711d-483f-8c0a-0e5888b1757f.jpg" alt="Lucrare COSTI SYSTEM 17 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 17</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/db73bb7e-41e4-4698-9619-2bc9175d70cb.jpg" alt="Lucrare COSTI SYSTEM 18 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 18</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/4c572030-b830-4a8d-9724-114fc8afcd06.jpg" alt="Lucrare COSTI SYSTEM 19 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 19</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/16640903-63ba-4c3f-a79e-a9b89b3b4257.jpg" alt="Lucrare COSTI SYSTEM 20 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 20</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/8346b09c-befd-4090-b229-ccfcc50c66ed.jpg" alt="Lucrare COSTI SYSTEM 21 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 21</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/95189f63-e30e-42c3-b3ce-ec45d7dd0cd0.jpg" alt="Lucrare COSTI SYSTEM 22 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 22</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/f626e40f-4754-415c-b531-2fa82f982b68.jpg" alt="Lucrare COSTI SYSTEM 23 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 23</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/c773be27-8031-4561-a088-50efccbc87d6.jpg" alt="Lucrare COSTI SYSTEM 24 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 24</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/f5fee132-357a-4df9-b88f-07f4c2f9b77b.jpg" alt="Lucrare COSTI SYSTEM 25 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 25</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/71dd1d88-1587-498d-817f-41b4d2ae4894.jpg" alt="Lucrare COSTI SYSTEM 26 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 26</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/ea731938-fb78-4cc4-9284-0ae5d10ebf8a.jpg" alt="Lucrare COSTI SYSTEM 27 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 27</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/1433a897-0c3e-48ad-8829-38bc777c915e.jpg" alt="Lucrare COSTI SYSTEM 28 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 28</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/ba7e265c-93cd-4c7a-a5b2-db074b967c38.jpg" alt="Lucrare COSTI SYSTEM 29 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 29</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/0e839e9a-e072-46b1-a46a-a1074191c032.jpg" alt="Lucrare COSTI SYSTEM 30 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 30</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/74cf8bef-5412-4745-85e4-6dafef03738a.jpg" alt="Lucrare COSTI SYSTEM 31 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 31</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/71a89ad9-8156-4d6a-a0a5-43817582d718.jpg" alt="Lucrare COSTI SYSTEM 32 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 32</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/1e6119ce-a1d5-4387-b508-8414c3720cc1.jpg" alt="Lucrare COSTI SYSTEM 33 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 33</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/5a4fe769-a7a2-43b3-b01e-a87b53064fb9.jpg" alt="Lucrare COSTI SYSTEM 34 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 34</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/7fb57414-8dec-422e-aff5-ffa1de034640.jpg" alt="Lucrare COSTI SYSTEM 35 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 35</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/a00856c7-b192-4425-b57f-d1d177d191bd.jpg" alt="Lucrare COSTI SYSTEM 36 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 36</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/6b198e4f-d8d9-4639-bca6-3794671092b3.jpg" alt="Lucrare COSTI SYSTEM 37 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 37</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/a1b1e7de-7feb-4f82-8668-7b1c853090d3.jpg" alt="Lucrare COSTI SYSTEM 38 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 38</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/21ca7f4b-b3a2-47ff-9913-98dca7c1de39.jpg" alt="Lucrare COSTI SYSTEM 39 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 39</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/47aea532-bd9b-411b-bda7-e4eacdb021cf.jpg" alt="Lucrare COSTI SYSTEM 40 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 40</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/e5b73ede-e01a-4d57-94a6-045d7c8b859d.jpg" alt="Lucrare COSTI SYSTEM 41 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 41</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/3cf039e8-046f-4848-90ec-b74e5b51485c.jpg" alt="Lucrare COSTI SYSTEM 42 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 42</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/4a75bf45-c7d9-4615-83cc-42adb3bf9e58.jpg" alt="Lucrare COSTI SYSTEM 43 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 43</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/65091a31-e284-4a13-bc19-90f50659e5eb.jpg" alt="Lucrare COSTI SYSTEM 44 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 44</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/bd8b3ddf-5f74-4d68-a5b9-e89652433678.jpg" alt="Lucrare COSTI SYSTEM 45 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 45</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/44c68db6-879d-4186-b44e-74a9df761596.jpg" alt="Lucrare COSTI SYSTEM 46 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 46</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/476acb1b-4278-4703-b8c0-92782c0a7178.jpg" alt="Lucrare COSTI SYSTEM 47 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 47</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/3b1532ae-eec1-4b72-b676-2f2f027098e7.jpg" alt="Lucrare COSTI SYSTEM 48 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 48</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/e75003cd-8439-4ea6-992a-fc3652ae1e57.jpg" alt="Lucrare COSTI SYSTEM 49 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 49</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/dc2186cd-4177-41cb-a046-684fe27a07b8.jpg" alt="Lucrare COSTI SYSTEM 50 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 50</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/bcbfe4a8-4054-4760-85c7-0c946290e587.jpg" alt="Lucrare COSTI SYSTEM 51 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 51</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/8b27b86a-0d0d-48d9-b3fd-e4d6ca50b6d1.jpg" alt="Lucrare COSTI SYSTEM 52 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 52</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/1fabb723-ae1d-4918-9512-fec4094d083f.jpg" alt="Lucrare COSTI SYSTEM 53 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 53</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/80b1e9db-1ab0-4d7a-9da9-86ba962bddcf.jpg" alt="Lucrare COSTI SYSTEM 54 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 54</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/99594e77-aa37-4e49-966b-40dc111be3e7.jpg" alt="Lucrare COSTI SYSTEM 55 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 55</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/a537d429-1d7b-4b8d-8671-3b3523d7e167.jpg" alt="Lucrare COSTI SYSTEM 56 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 56</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/a2a47ecc-60d8-480a-a085-2302aaea8123.jpg" alt="Lucrare COSTI SYSTEM 57 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 57</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/2d173d09-404d-4542-9711-b114ca5aa5d8.jpg" alt="Lucrare COSTI SYSTEM 58 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 58</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/d6375fc9-440e-4f6f-bfd3-0e7a48934b01.jpg" alt="Lucrare COSTI SYSTEM 59 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 59</span>
+                </figure>
+
+                <figure class="lucrari-item">
+                    <img src="assets/images/lucrari/95918601-ecf6-4ee2-a9f6-d4dd586aca9a.jpg" alt="Lucrare COSTI SYSTEM 60 — termopane, uși PVC și sisteme de umbrire" loading="lazy"
+                         onload="this.closest('.lucrari-item').classList.add('has-img')"
+                         onerror="this.closest('.lucrari-item').remove()">
+                    <span class="lucrari-ph-label">Lucrare 60</span>
+                </figure>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="lucrari-cta">
+        <div class="container">
+            <h2>Vrei și tu un proiect similar?</h2>
+            <p>Contactează-ne pentru o ofertă personalizată</p>
+            <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Solicită Ofertă</a>
+        </div>
+    </section>
+
+    <!-- MODAL GALERIE -->
+    <div class="modal-overlay" id="lucrare-modal">
+        <div class="modal lucrare-modal">
+            <button class="modal-close" aria-label="Închide">&times;</button>
+            <div class="lucrare-modal-img">
+                <img id="lucrare-modal-image" alt="Proiect COSTI SYSTEM">
+                <span class="lucrari-ph-label" id="lucrare-modal-ph">Imagine</span>
+            </div>
+            <div class="lucrare-modal-actions">
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." class="btn btn-primary" target="_blank" rel="noopener noreferrer">Cerere ofertă</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

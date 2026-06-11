@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - COSTI SYSTEM Bacău</title>
+    <meta name="description" content="Contactează COSTI SYSTEM Bacău: telefon, email, adresă. Răspundem rapid cerinței tale și oferim consultanță gratuită.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* ====================================================
+         CONTACT — casete premium (telefon / email / locație)
+         + buton mare WhatsApp (preluat din pagina Oferte)
+         ==================================================== */
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1040px;
+        margin: 0 auto;
+      }
+      .contact-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #fff;
+        border: 1px solid #e7edf4;
+        border-radius: 16px;
+        padding: 38px 26px 30px;
+        text-decoration: none;
+        box-shadow: 0 14px 36px -22px rgba(18,40,77,0.30), 0 2px 6px rgba(18,40,77,0.05);
+        transition: transform 0.35s cubic-bezier(.22,.61,.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+        overflow: hidden;
+      }
+      .contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(.22,.61,.36,1);
+      }
+      .contact-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 28px 56px -22px rgba(18,40,77,0.42);
+        border-color: #d4dded;
+      }
+      .contact-card:hover::before { transform: scaleX(1); }
+      .cc-icon {
+        width: 74px; height: 74px;
+        border-radius: 50%;
+        display: grid; place-items: center;
+        margin-bottom: 20px;
+        color: #fff;
+        background: linear-gradient(135deg, #244a73 0%, #12283f 100%);
+        box-shadow: 0 14px 28px -12px rgba(18,40,77,0.55);
+        transition: transform 0.35s cubic-bezier(.22,.61,.36,1);
+      }
+      .cc-icon--red {
+        background: linear-gradient(135deg, #ef5b4c 0%, #c8191b 100%);
+        box-shadow: 0 14px 28px -12px rgba(200,25,27,0.5);
+      }
+      .contact-card:hover .cc-icon { transform: scale(1.08) translateY(-2px); }
+      .cc-icon svg { width: 32px; height: 32px; }
+      .cc-label {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: 10px;
+      }
+      .cc-value {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: var(--color-secondary);
+        line-height: 1.4;
+      }
+      .cc-sub {
+        font-size: 1rem;
+        color: #5a6472;
+        margin-top: 3px;
+        line-height: 1.45;
+      }
+      .cc-action {
+        margin-top: 20px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: gap 0.3s ease;
+      }
+      .contact-card:hover .cc-action { gap: 11px; }
+      .cc-action svg { width: 16px; height: 16px; }
+
+      /* Bloc WhatsApp */
+      .wa-block {
+        text-align: center;
+        max-width: 760px;
+        margin: clamp(48px, 6vw, 76px) auto 0;
+        padding-top: clamp(40px, 5vw, 56px);
+        border-top: 1px solid #e3e9f1;
+      }
+      .wa-block-title {
+        font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+        font-weight: 800;
+        color: var(--color-secondary);
+        margin: 0 0 12px;
+      }
+      .wa-block-title .t-red { color: var(--color-primary); }
+      .wa-block-sub {
+        color: #5a6472;
+        font-size: 1.06rem;
+        line-height: 1.6;
+        max-width: 54ch;
+        margin: 0 auto 28px;
+      }
+
+      /* Buton mare WhatsApp — identic cu cel de pe Oferte */
+      .wa-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 46px;
+        background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
+        color: #ffffff;
+        border-radius: 60px;
+        text-decoration: none;
+        font-size: 1.55rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        box-shadow: 0 18px 44px rgba(37, 211, 102, 0.40);
+        transition: transform 0.3s cubic-bezier(.22,.61,.36,1), box-shadow 0.3s ease;
+      }
+      .wa-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 26px 56px rgba(37, 211, 102, 0.48);
+        color: #ffffff;
+      }
+      /* la hover, textul „Cere o Ofertă" devine bleumarin (nu roșu) */
+      .wa-cta-txt { transition: color 0.3s ease; }
+      .wa-cta:hover .wa-cta-txt { color: var(--color-secondary); }
+      .wa-cta-ic {
+        position: relative;
+        width: 46px; height: 46px;
+        flex: 0 0 46px;
+        display: grid; place-items: center;
+      }
+      .wa-cta-ic svg { width: 42px; height: 42px; color: #ffffff; position: relative; z-index: 1; }
+      .wa-pulse {
+        position: absolute; inset: 0; border-radius: 50%;
+        animation: waPulse 2.4s ease-out infinite;
+      }
+      @keyframes waPulse {
+        0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+        70%  { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+      }
+      @media (prefers-reduced-motion: reduce) { .wa-pulse { animation: none; } }
+
+      @media (max-width: 820px) {
+        .contact-cards { grid-template-columns: 1fr; max-width: 460px; }
+      }
+      @media (max-width: 480px) {
+        .wa-cta { gap: 13px; padding: 16px 30px; font-size: 1.25rem; }
+        .wa-cta-ic { width: 36px; height: 36px; flex-basis: 36px; }
+        .wa-cta-ic svg { width: 34px; height: 34px; }
+      }
+
+      /* ====================================================
+         HERO FOTO + LAYOUT HARTĂ (varianta C)
+         ==================================================== */
+      .c-hero {
+        position: relative;
+        height: clamp(240px, 36vh, 360px);
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+      }
+      .c-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .c-hero-scrim {
+        position: absolute; inset: 0;
+        /* deschis ca pe Acasă — poza rămâne luminoasă, doar un voal jos */
+        background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 55%, rgba(13,27,42,0.30) 100%);
+      }
+      .c-hero h1 {
+        position: relative;
+        color: #fff;
+        font-size: clamp(2.4rem, 5.6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin: 0;
+        /* halou alb identic cu titlul de pe Acasă */
+        text-shadow: 0 2px 24px rgba(255,255,255,0.55), 0 1px 3px rgba(255,255,255,0.9);
+        padding-bottom: 18px;
+      }
+      /* bicolor (bleumarin + roșu) — culorile siglei, ca pe Acasă */
+      .c-hero h1 .t-navy { color: var(--color-secondary); -webkit-text-fill-color: var(--color-secondary); }
+      .c-hero h1 .t-red  { color: var(--color-primary);   -webkit-text-fill-color: var(--color-primary); }
+      /* accent bicolor (roșu + bleumarin sigla) sub titlu */
+      .c-hero h1::after {
+        content: '';
+        position: absolute;
+        left: 50%; bottom: 0;
+        transform: translateX(-50%);
+        width: 88px; height: 4px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--color-primary) 0 50%, var(--color-secondary) 50% 100%);
+      }
+      /* slide-in la încărcare pentru titlul Contact — doar translație,
+         opacitatea rămâne 1 (titlul e mereu vizibil, niciodată ascuns) */
+      @media (prefers-reduced-motion: no-preference) {
+        .c-hero h1 { animation: cHeroIn 0.85s cubic-bezier(.22,.61,.36,1) both; }
+        @keyframes cHeroIn { from { transform: translateY(30px); } to { transform: none; } }
+      }
+      .c-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(28px, 3.4vw, 44px);
+        align-items: stretch;
+      }
+      .c-info { display: flex; flex-direction: column; gap: 16px; }
+      .c-item {
+        display: flex; align-items: center; gap: 16px;
+        background: #fff; border: 1px solid #e7edf4; border-left: 4px solid var(--color-primary);
+        border-radius: 12px; padding: 20px 22px; text-decoration: none;
+        box-shadow: 0 10px 26px -18px rgba(18,40,77,0.30);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .c-item:hover { transform: translateY(-3px); box-shadow: 0 18px 38px -20px rgba(18,40,77,0.40); }
+      .c-item .cic { width: 52px; height: 52px; border-radius: 50%; background: #f1f5fa; display: grid; place-items: center; flex: 0 0 auto; }
+      .c-item .cic svg { width: 24px; height: 24px; stroke: var(--color-secondary); fill: none; stroke-width: 1.7; }
+      .c-item .clab { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 3px; }
+      .c-item .cval { display: block; font-size: 1.06rem; font-weight: 700; color: var(--color-secondary); line-height: 1.4; }
+      .c-wa { margin-top: 6px; }
+
+      /* Hartă Google Maps reală (embed responsive) */
+      .c-map {
+        position: relative; min-height: 420px;
+        border-radius: 16px; overflow: hidden;
+        border: 1px solid #e7edf4;
+        box-shadow: 0 18px 44px -26px rgba(18,40,77,0.40);
+      }
+      .c-map iframe {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        border: 0; display: block;
+      }
+      .c-map-open {
+        position: absolute; right: 14px; bottom: 14px; z-index: 1;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 11px 17px; border-radius: 50px;
+        background: #fff; color: var(--color-secondary);
+        font-weight: 700; font-size: 0.92rem; text-decoration: none;
+        box-shadow: 0 8px 22px -6px rgba(18,40,77,0.45);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, gap 0.3s ease, color 0.3s ease;
+      }
+      .c-map-open:hover {
+        transform: translateY(-2px); gap: 11px; color: var(--color-primary);
+        box-shadow: 0 14px 30px -8px rgba(18,40,77,0.5);
+      }
+      .c-map-open svg { width: 16px; height: 16px; }
+
+      @media (max-width: 820px) {
+        .c-body { grid-template-columns: 1fr; }
+        .c-map { min-height: 320px; }
+      }
+
+      /* ====================================================
+         MOBIL ≤768px — optimizare completă
+         (toate elementele încap în 360px, fără scroll orizontal)
+         ==================================================== */
+      @media (max-width: 768px) {
+        /* General — spațiere redusă, nimic nu iese din ecran */
+        .section { padding: 40px 0; }
+        .c-body {
+          gap: 18px;
+          max-width: 100%;
+          overflow: hidden;
+        }
+
+        /* Hero titlu mai compact */
+        .c-hero { height: clamp(170px, 28vh, 230px); }
+        .c-hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); padding-bottom: 12px; }
+
+        /* Bara contact (telefon / email / locație) — compactă, icon + text pe o linie */
+        .c-info { gap: 10px; }
+        .c-item {
+          gap: 12px;
+          padding: 14px 16px;
+          max-width: 100%;
+        }
+        .c-item .cic { width: 40px; height: 40px; }
+        .c-item .cic svg { width: 20px; height: 20px; }
+        .c-item .clab { font-size: 10px; margin-bottom: 2px; }
+        .c-item .cval {
+          font-size: 13px;
+          line-height: 1.35;
+          /* sparge emailul/telefonul lung ca să nu iasă din ecran */
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+
+        /* Buton WhatsApp — pe toată lățimea, ușor de apăsat */
+        .wa-cta {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          margin: 10px auto 0;
+          padding: 15px 20px;
+          font-size: 14px;
+          gap: 12px;
+        }
+        .wa-cta-ic { width: 30px; height: 30px; flex-basis: 30px; }
+        .wa-cta-ic svg { width: 28px; height: 28px; }
+
+        /* Hartă — înălțime 300px, lățime completă */
+        .c-map { min-height: 300px; width: 100%; }
+        .c-map-open { font-size: 12px; padding: 9px 13px; }
+      }
+    </style>
+</head>
+<body class="product-page">
+
+    <header class="site-header">
+        <div class="header-main">
+            <div class="container header-content">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo-costi.png" alt="COSTI SYSTEM" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-costi">Costi</span> <span class="logo-sistem">Sistem</span>
+                    </span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#" data-products-open>Produse</a></li>
+                        <li><a href="oferte.html">Oferte</a></li>
+                        <li><a href="servicii.html">Servicii</a></li>
+                        <li><a href="furnizori.html">Furnizori</a></li>
+                        <li><a href="lucrari.html">Lucrări</a></li>
+                        <li><a href="despre.html">Despre</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="menu-toggle" aria-label="Deschide meniu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="products-backdrop" id="products-backdrop"></div>
+    <aside class="products-sidebar" id="products-sidebar" aria-hidden="true">
+        <div class="products-sidebar-header">
+            <span class="ph-label"><span class="ph-pipe"></span>PRODUSE</span>
+            <button class="products-sidebar-close" data-products-close aria-label="Închide">×</button>
+        </div>
+        <div class="products-sidebar-body">
+            <div class="products-sidebar-col products-sidebar-col1">
+                <ul class="products-cat-list"></ul>
+            </div>
+            <div class="products-sidebar-col products-sidebar-col2">
+                <div class="products-sub-placeholder">Selectează o categorie</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- HERO FOTO -->
+    <section class="c-hero" data-screen-label="Hero Contact">
+        <img src="assets/images/poze site fundal/hero-casa-ceata.png" alt="Casă modernă cu tâmplărie premium, în ceață montană — COSTI SYSTEM" fetchpriority="high">
+        <div class="c-hero-scrim"></div>
+        <h1><span class="t-navy">Contact</span></h1>
+    </section>
+
+    <section class="section section-light">
+        <div class="container c-body">
+            <div class="c-info">
+                <a class="c-item" href="tel:0758271007">
+                    <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                    <span><span class="clab">Telefon</span><span class="cval">0758 271 007 · 0756 824 792</span></span>
+                </a>
+                <a class="c-item" href="mailto:officecosti.sistem@yahoo.com">
+                    <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+                    <span><span class="clab">Email</span><span class="cval">officecosti.sistem@yahoo.com</span></span>
+                </a>
+                <a class="c-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">
+                    <span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                    <span><span class="clab">Locație</span><span class="cval">Calea Mărășești nr. 98, Bloc 98, 600114 Bacău</span></span>
+                </a>
+                <a href="https://wa.me/40756824792?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20o%20ofert%C4%83%20gratuit%C4%83%20pentru%20t%C3%A2mpl%C4%83rie%20PVC%20%2F%20aluminiu.%20V%C4%83%20rog%20s%C4%83%20m%C4%83%20contacta%C8%9Bi." target="_blank" rel="noopener noreferrer" class="wa-cta c-wa">
+                    <span class="wa-cta-ic">
+                        <span class="wa-pulse"></span>
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </span>
+                    <span class="wa-cta-txt">Cere o Ofertă</span>
+                </a>
+            </div>
+
+            <div class="c-map">
+                <iframe
+                    src="https://maps.google.com/maps?q=46.551856053907464,26.91289536532644&amp;z=17&amp;output=embed"
+                    title="Hartă COSTI SYSTEM — Calea Mărășești 98, Bloc 98, 600114 Bacău"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                <a class="c-map-open" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener" aria-label="Deschide locația în Google Maps">
+                    Deschide în Google Maps
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ia legătura cu noi!</h2>
+            <p>Măsurători gratuite la domiciliu și consultanță personalizată.</p>
+            <a href="tel:0758271007" class="call-btn">
+                <span class="call-ic">
+                    <span class="call-pulse"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="call-txt">
+                    <small>SUNĂ ACUM </small>
+                    <strong>0758 271 007</strong>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Media Band -->
+    <div class="social-band">
+      <h3>Urmărește-ne</h3>
+      <p>Fii la curent cu noutățile și ofertele noastre pe rețelele sociale.</p>
+
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/share/14ciSpv8pB7/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <span class="social-ic"><img src="assets/images/social/facebook.png" alt="Facebook"></span>
+          <span class="social-name">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <span class="social-ic"><img src="assets/images/social/instagram.png" alt="Instagram"></span>
+          <span class="social-name">Instagram</span>
+        </a>
+        <a href="https://www.tiktok.com/@costi.system" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+          <span class="social-ic"><img src="assets/images/social/tiktok.png" alt="TikTok"></span>
+          <span class="social-name">TikTok</span>
+        </a>
+        <a href="https://wa.me/40756824792" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <span class="social-ic"><img src="assets/images/social/whatsapp.png" alt="WhatsApp"></span>
+          <span class="social-name">WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <!-- End Social Media Band -->
+
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span class="fl-red">COSTI</span> <span class="fl-white">SYSTEM</span></div>
+                    <p class="footer-tagline">Tâmplărie PVC &amp; Aluminiu · Bacău</p>
+                    <p>Specialiști în tâmplărie PVC și aluminiu cu sediul în Bacău. Oferim soluții complete: de la consultanță și măsurători până la montaj și service post-vânzare.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a class="footer-contact-item" href="tel:+40758271007"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0758 271 007</span></a>
+                    <a class="footer-contact-item" href="tel:+40756824792"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>0756 824 792</span></a>
+                    <a class="footer-contact-item" href="mailto:officecosti.sistem@yahoo.com"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>officecosti.sistem@yahoo.com</span></a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Locație</h3>
+                    <a class="footer-contact-item" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener"><span class="fci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Calea Mărășești nr. 98, Bloc 98<br>600114 Bacău, România</span></a>
+                    <a class="footer-maplink" href="https://www.google.com/maps?q=46.551856053907464,26.91289536532644" target="_blank" rel="noopener">Deschide pe hartă →</a>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <span>© 2025 COSTI SYSTEM. Toate drepturile rezervate.</span>
+                <span>Bacău · Moldova</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
