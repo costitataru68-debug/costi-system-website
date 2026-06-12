@@ -1,0 +1,6 @@
+# Fisiere care NU trebuie urcate pe Vercel (doar artefacte locale / handoff)
+*.zip
+node_modules
+.git
+*.psd
+*.ai
