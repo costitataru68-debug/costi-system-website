@@ -144,7 +144,7 @@ ul {
 
 .header-main {
     padding: 15px 0;
-    min-height: 130px;
+    min-height: 122px;
     display: flex;
     align-items: center;
 }
@@ -171,7 +171,7 @@ ul {
 }
 
 .logo-img {
-    height: 84px;
+    height: 100px;
     width: auto;
     display: block;
 }
@@ -3440,6 +3440,7 @@ body.no-scroll {
    Adăugat la final ca să suprascrie regulile .hero de mai sus.
    ==================================================== */
 .hero-cine {
+    position: relative;
     background: var(--color-dark);
     color: #fff;
     padding: 0;
@@ -3664,6 +3665,12 @@ body.no-scroll {
     border: 2px solid rgba(255,255,255,0.65);
     border-radius: 14px;
     position: relative;
+    margin: 0 auto;
+    animation: heroBob 2.4s ease-in-out 2.4s infinite;
+}
+@keyframes heroBob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(7px); }
 }
 .hero-cine .hero-scroll-cue .mouse::after {
     content: '';
@@ -3700,6 +3707,7 @@ body.no-scroll {
     .hero-cine p,
     .hero-cine .hero-buttons,
     .hero-cine .hero-scroll-cue { animation: none; opacity: 1; transform: none; }
+    .hero-cine .hero-scroll-cue .mouse { animation: none; }
     .hero-cine .hero-scroll-cue .mouse::after { animation: none; }
 }
 
