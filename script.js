@@ -6,7 +6,7 @@
 // CONFIGURARE - Date contact firmă
 // ====================================================
 const COMPANY = {
-    email: 'office.costisystem@yahoo.com',
+    email: 'office.costisistem@yahoo.com',
     phone1: '0758 271 007',
     phone2: '0756 824 792'
 };
