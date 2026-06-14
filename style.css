@@ -4,6 +4,7 @@
 
 /* Variabile CSS pentru culori și valori reutilizabile */
 :root {
+    color-scheme: light;             /* Site doar pe mod luminos — împiedică auto-dark din browser */
     --color-primary: #c8191b;        /* Roșu accent */
     --color-primary-dark: #951113;
     --color-secondary: #12284d;      /* Albastru închis */
@@ -4969,3 +4970,61 @@ html { scroll-behavior: smooth; }
 .footer-legal a:hover{color:#fff;text-decoration:underline;}
 .footer-legal .fl-sep{color:rgba(255,255,255,.35);}
 @media(max-width:600px){.footer-legal{gap:6px 10px;font-size:.8rem;}}
+
+/* ====================================================
+   BANNER COOKIE-URI (consimțământ GDPR)
+   ==================================================== */
+.cookie-banner {
+    position: fixed;
+    left: 16px; right: 16px; bottom: 16px;
+    z-index: 9999;
+    max-width: 920px;
+    margin: 0 auto;
+    background: #12284d;
+    color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+    padding: 18px 22px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .3s ease, transform .3s ease;
+}
+.cookie-banner.show { opacity: 1; transform: translateY(0); }
+.cookie-banner-inner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+.cookie-banner-text {
+    margin: 0;
+    flex: 1 1 320px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.cookie-banner-text a { color: #ffd0d0; text-decoration: underline; }
+.cookie-banner-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.cookie-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+}
+.cookie-btn:hover { transform: translateY(-2px); }
+.cookie-btn-accept { background: #c8191b; color: #fff; }
+.cookie-btn-accept:hover { background: #a91416; }
+.cookie-btn-reject { background: rgba(255,255,255,0.14); color: #fff; }
+.cookie-btn-reject:hover { background: rgba(255,255,255,0.24); }
+@media (max-width: 600px) {
+    .cookie-banner { left: 10px; right: 10px; bottom: 10px; padding: 16px; }
+    .cookie-banner-actions { width: 100%; }
+    .cookie-btn { flex: 1; }
+}

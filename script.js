@@ -12,6 +12,57 @@ const COMPANY = {
 };
 
 // ====================================================
+// BANNER COOKIE-URI (consimțământ GDPR + Google Consent Mode)
+// ====================================================
+function initCookieBanner() {
+    const KEY = 'costi-cookie-consent';
+    const stored = localStorage.getItem(KEY);
+
+    function applyConsent(state) {
+        if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+                'analytics_storage': state === 'granted' ? 'granted' : 'denied'
+            });
+        }
+    }
+
+    // Dacă utilizatorul a ales deja, aplică alegerea și nu mai afișa bannerul
+    if (stored === 'granted' || stored === 'denied') {
+        applyConsent(stored);
+        return;
+    }
+
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Consimțământ cookie-uri');
+    banner.innerHTML =
+        '<div class="cookie-banner-inner">' +
+            '<p class="cookie-banner-text">' +
+                'Folosim cookie-uri pentru funcționarea site-ului și pentru statistici anonime de trafic (Google Analytics). ' +
+                'Poți accepta sau refuza cookie-urile analitice. Detalii în ' +
+                '<a href="politica-cookies.html">Politica de Cookies</a>.' +
+            '</p>' +
+            '<div class="cookie-banner-actions">' +
+                '<button type="button" class="cookie-btn cookie-btn-reject" data-cookie="denied">Refuz</button>' +
+                '<button type="button" class="cookie-btn cookie-btn-accept" data-cookie="granted">Accept</button>' +
+            '</div>' +
+        '</div>';
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner.classList.add('show'));
+
+    banner.querySelectorAll('[data-cookie]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const choice = btn.getAttribute('data-cookie');
+            localStorage.setItem(KEY, choice);
+            applyConsent(choice);
+            banner.classList.remove('show');
+            setTimeout(() => banner.remove(), 300);
+        });
+    });
+}
+
+// ====================================================
 // MENIU MOBIL - Toggle hamburger
 // ====================================================
 function initMobileMenu() {
@@ -994,6 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initImageFade();
     initHashScroll();
+    initCookieBanner();
 
     // Populează dropdown-ul de geam pentru uși (dacă există)
     const glassSelect = document.getElementById('door-glass');
